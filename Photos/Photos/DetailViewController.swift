@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
     var photo: Photo?
+    var liked = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,15 @@ class DetailViewController: UIViewController {
 
     func back(sender: UIBarButtonItem) {
         navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    
+    @IBAction func pressedLike(sender: UIButton) {
+        if !liked {
+            photo?.likes!++
+            liked = true
+            self.likesLabel.text = "Likes: \(photo!.likes)"
+        }
     }
     
     
